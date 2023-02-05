@@ -7,8 +7,13 @@ var scissorsBtn = document.getElementById('scissors');
 var paperBtn = document.getElementById('paper');
 var rockBtn = document.getElementById('rock');
 var buttonsArray = [scissorsBtn, paperBtn, rockBtn];
-var score = 0;
-// let currentIcon: HTMLImageElement | null;
+// Updating score board on refresh
+var score = Number(localStorage.getItem('score'));
+if (score == null) {
+    score = 0;
+    localStorage.setItem('score', "".concat(score));
+}
+document.getElementById('score-number-span').innerHTML = "".concat(score);
 var psr;
 (function (psr) {
     psr[psr["paper"] = 1] = "paper";
@@ -30,9 +35,6 @@ buttonsArray.forEach(function (obj) {
     obj.addEventListener('click', function () {
         var userBet = { selection: psr["".concat(obj.id)], colorValue: colorValues["".concat(obj.id)], iconSrc: iconSrcs["".concat(obj.id)] };
         var houseBet = randomChoice();
-        console.log('user: ');
-        console.log(userBet);
-        console.log(houseBet);
         // --- Changing main screen divs --- //
         mainContainer.style.display = "none";
         mainContainerPageTwo.style.display = "block";
@@ -47,7 +49,6 @@ buttonsArray.forEach(function (obj) {
         var result = whoWin(userBet.selection, houseBet.selection);
         // --- Revealing the house selection after 2secs timeout --- //
         setTimeout(function () {
-            console.log(result);
             document.getElementById('house-selection').style.display = "block";
             if (result == 'tie') {
                 document.getElementById('result-text-span').innerHTML = "IT'S A ".concat(result.toUpperCase(), "!");
@@ -65,7 +66,6 @@ buttonsArray.forEach(function (obj) {
 function randomChoice() {
     var randomNum = Math.random() * 3;
     var randomChoice;
-    console.log(randomNum);
     if (randomNum > 0 && randomNum < 1) {
         randomChoice = 'scissors';
     }
@@ -116,6 +116,7 @@ function whoWin(userBet, houseBet) {
     }
 }
 function updateScore(result) {
+    score = Number(localStorage.getItem('score'));
     switch (result) {
         case 'win':
             score += 1;
@@ -126,6 +127,7 @@ function updateScore(result) {
         case 'tie':
             score = score;
     }
+    localStorage.setItem('score', "".concat(score));
     return score;
 }
 // --- Event listener for modal box ("rules" button clicked) --- //

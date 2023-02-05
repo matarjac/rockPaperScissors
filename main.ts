@@ -7,8 +7,14 @@ const scissorsBtn = document.getElementById('scissors') as HTMLButtonElement | n
 const paperBtn = document.getElementById('paper') as HTMLButtonElement | null;
 const rockBtn = document.getElementById('rock') as HTMLButtonElement | null;
 let buttonsArray: HTMLButtonElement[] = [scissorsBtn, paperBtn, rockBtn];
-let score: number = 0;
-// let currentIcon: HTMLImageElement | null;
+
+// Updating score board on refresh
+let score: number | null = Number(localStorage.getItem('score'));
+if (score == null){
+    score = 0;
+    localStorage.setItem('score', `${score}`);
+}
+document.getElementById('score-number-span').innerHTML=`${score}`;
 
 enum psr {
     paper = 1,
@@ -120,6 +126,7 @@ function whoWin(userBet: psr, houseBet: psr): string{
 }
 
 function updateScore(result:string): number{
+    score = Number(localStorage.getItem('score'));
     switch(result){
         case 'win':
             score+=1;
@@ -130,6 +137,7 @@ function updateScore(result:string): number{
         case 'tie':
             score=score;
     }
+    localStorage.setItem('score', `${score}`);
     return score;
 }
 
