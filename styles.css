@@ -1,0 +1,416 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.page {
+  height: 97vh;
+  width: 100vw;
+  position: relative;
+  /* background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%)); */
+  /* display: flex;
+  flex-direction: column;
+  align-content: center; */
+}
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+#title-div {
+  border: 1px white solid;
+  border-radius: 9px;
+  height: 20vh;
+  width: 55vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 4vh;
+}
+
+#title-span {
+  font-size: 40px;
+  color: white;
+  height: 120px;
+  width: 150px;
+  line-height: 90%;
+}
+
+#score-board-container {
+  background-color: white;
+  height: 120px;
+  width: 150px;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#score-board-container :nth-child(1) {
+  color: hsl(229, 64%, 46%);
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+#score-board-container :nth-child(2) {
+  color: hsl(229, 25%, 31%);
+  font-size: 70px;
+  height: fit-content;
+  line-height: 90%;
+}
+
+#main-container,
+#triangle-bg-container {
+  width: 100vw;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  /* background-image: url("images/bg-triangle.svg"); */
+  /* padding: 5vh 10vw 5vh 10vw; */
+  /* margin: 0 auto; */
+  /* margin-top: 20vh; */
+}
+
+#main-container-result-page {
+  display: none;
+  width: 100vw;
+  height: 60vh;
+}
+
+#titles {
+  display: flex;
+  justify-content: center;
+  gap: 20%;
+}
+
+#titles h2 {
+  color: white;
+}
+
+#triangle-bg-container {
+  position: absolute;
+}
+
+#buttons-container {
+  width: 40vw;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+#triangle-bg-img {
+  scale: 50%;
+}
+
+.option {
+  all: unset;
+  border-radius: 50%;
+  background-color: white;
+  height: 125px;
+  width: 125px;
+  position: relative;
+  padding: 20px 20px;
+  /* outline: none; */
+  /* position: relative; */
+  /* border-radius: 5px; */
+  cursor: pointer;
+  box-shadow: inset 0 -6px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+
+#scissors {
+  background: radial-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  /* margin: auto auto; */
+  grid-area: 1/1/1/1;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+#scissors-container {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+
+#rock {
+  background: radial-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  grid-area: 2/1/2/2;
+  display: relative;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+#rock-container {
+  position: absolute;
+  bottom: 190px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+#paper {
+  background: radial-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  /* margin: auto auto; */
+  grid-area: 1/1/1/1;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+.option:hover {
+  height: 150px;
+  width: 150px;
+}
+
+#paper-container {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+
+.option img {
+  z-index: 1;
+}
+
+.option::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  background-color: white;
+  box-shadow: inset 0em 0.3em rgba(0, 0, 0, 0.2);
+}
+
+/* #all-page-modal-container {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  z-index: 1;
+  display: none;
+} */
+
+#rules-btn-container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: auto auto;
+}
+
+#rules-btn {
+  all: unset;
+  color: white;
+  border: 1px white solid;
+  padding: 1% 3%;
+  letter-spacing: 1px;
+  border-radius: 8px;
+  margin-right: 3vw;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#rules-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.rules-container {
+  background-color: white;
+  position: absolute;
+  border-radius: 9px;
+  width: 450px;
+  height: 50vh;
+  padding: 3vh;
+  bottom: 210px;
+  right: 495px;
+  z-index: 1;
+  display: none;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+#close-img {
+  scale: 60%;
+  cursor: pointer;
+}
+
+.not-hidden {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.rules-container div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2vh;
+}
+
+/* Opponents page */
+
+#opponents-container {
+  margin-top: 5vh;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.opponent-container h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 7vh;
+  letter-spacing: 3px;
+}
+
+/* user pick css */
+
+#user-selection {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  background: radial-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  position: relative;
+  box-shadow: inset 0 -7px rgba(0, 0, 0, 0.2);
+}
+
+#user-selection div {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  box-shadow: inset 0em 0.4em rgba(0, 0, 0, 0.2);
+}
+#user-selection img {
+  scale: 50%;
+}
+
+/* House pick css */
+
+#shadow-reveal {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#house-selection {
+  display: none;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  background: radial-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  position: relative;
+  box-shadow: inset 0 -7px rgba(0, 0, 0, 0.2);
+}
+
+#house-selection div {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  box-shadow: inset 0em 0.4em rgba(0, 0, 0, 0.2);
+}
+#house-selection img {
+  scale: 50%;
+}
+
+.result-play-again-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto auto;
+  width: 20vw;
+  align-items: center;
+  position: relative;
+  bottom: 170px;
+}
+
+#result-playagain {
+  display: none;
+}
+
+#playagain-btn {
+  all: unset;
+  background-color: white;
+  border-radius: 9px;
+  height: 50px;
+  width: 120px;
+  font-size: 20px;
+  text-align: center;
+  padding: 0 40px 0 40px;
+  cursor: pointer;
+}
+
+#result-playagain span {
+  text-align: center;
+  font-size: 60px;
+  width: 300px;
+  color: white;
+}
+
+@media only screen and (max-width: 900px) {
+  .option {
+    height: 90px;
+    width: 90px;
+  }
+  #rock-container {
+    bottom: 140px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .option {
+    height: 70px;
+    width: 70px;
+  }
+
+  #title-span {
+    font-size: 30px;
+  }
+  #title-div {
+    width: 80vw;
+    align-items: flex-start;
+  }
+
+  #score-board-container {
+    height: 95px;
+    width: 125px;
+  }
+
+  #buttons-container {
+    width: 100vw;
+  }
+  #rock-container {
+    bottom: 100px;
+  }
+}

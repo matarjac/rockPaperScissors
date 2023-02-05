@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Rock, Paper, Scissors</title>
+
+    <!-- Score Rules You Picked The House Picked You Win You Lose Play Again -->
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+
+    <!-- Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <img src="" alt="" />
+      <div id="title-div">
+        <span id="title-span"> Rock Paper Scissors </span>
+        <div id="score-board-container">
+          <span> SCORE </span>
+          <span id="score-number-span"> 0 </span>
+        </div>
+      </div>
+      <div id="main-container">
+        <div id="triangle-bg-container">
+          <img id="triangle-bg-img" src="images/bg-triangle.svg" alt="" />
+        </div>
+        <div id="buttons-container">
+          <div id="rock-container">
+            <button class="option" id="rock">
+              <img src="images/icon-rock.svg" alt="" />
+            </button>
+          </div>
+          <div id="paper-container">
+            <button class="option" id="paper">
+              <img src="images/icon-paper.svg" alt="" />
+            </button>
+          </div>
+          <div id="scissors-container">
+            <button class="option" id="scissors">
+              <img src="images/icon-scissors.svg" alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="main-container-result-page">
+        <div id="titles"></div>
+        <div id="opponents-container" class="transitions">
+          <div class="opponent-container">
+            <h2>You picked</h2>
+            <div id="user-selection">
+              <div>
+                <img
+                  id="user-selection-icon"
+                  src="images/icon-paper.svg"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="opponent-container">
+            <h2>The house picked</h2>
+            <div id="shadow-reveal">
+              <div id="house-selection">
+                <div>
+                  <img
+                    id="house-selection-icon"
+                    src="images/icon-rock.svg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="result-playagain" class="result-play-again-container">
+          <span id="result-text-span">YOU WIN</span>
+          <button id="playagain-btn">PLAY AGAIN</button>
+        </div>
+      </div>
+      <div id="rules-btn-container">
+        <button id="rules-btn">Rules</button>
+      </div>
+    </div>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+      <div id="modal-box" class="rules-container">
+        <div>
+          <h2>Rules</h2>
+          <img id="close-img" src="images/icon-close.svg" alt="" />
+        </div>
+        <img src="images/image-rules.svg" alt="" />
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
